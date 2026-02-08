@@ -13,12 +13,22 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: sans-serif;
+      font-family: var(--my-card-font-family);
       background-color: #ededed;
     }
+
     polaris-chip {
       margin: 16px;
     }
+
+  my-card {
+      --my-card-background-color: #731506;
+      --my-card-btn-color: gray;
+      --my-card-btn-hover-color: black;
+      --my-card-text-color: white;
+      --my-card-font-family: serif;
+
+  }
   </style>
   <title>polaris-chip / my-card</title>
 </head>
@@ -32,7 +42,44 @@
   <polaris-chip title="Grants and donations"></polaris-chip>
 
   <h1>my-card</h1>
-  <my-card></my-card>
+
+  <div id="cardlist">
+
+  <my-card>
+    <!--Default card-->
+  </my-card> 
+
+  <my-card
+  title="Orange Gaga"
+  style="--my-card-background-color: orange;
+   --my-card-text-color: #731506;; 
+  --my-card-btn-color: gray; 
+  --my-card-btn-hover-color: black;">
+ </my-card>
+
+  <my-card
+  style="--my-card-background-color: #b3aecb; 
+  --my-card-btn-color: #351919; 
+  --my-card-font-family: ['Courier New', Courier, monospace];
+  --my-card-text-color: #351919;">
+  </my-card>
+
+  <my-card
+  title="Lady Gaga"
+  style="--my-card-btn-color: white;">
+  </my-card>
+
+  <my-card
+  style="--my-card-background-color: #00dd07; 
+  --my-card-btn-color: #093402; 
+  --my-card-font-family: 'Brush Script MT', Cursive, cursive;
+  --my-card-text-color: #2e356f;">
+  </my-card>
+
+</div>
+  
+ 
+
 
   <!-- this is what is bringing in the definition for this tag -->
   <script type="module" src="./src/polaris-chip.js"></script>
