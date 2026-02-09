@@ -22,17 +22,6 @@ export class MyCard extends LitElement {
     this.body = "Lady Gaga's 7th studio albulm, Mayhem, explores love, chaos, fame, and identity. It was preceded by two singles: 'Disease' and 'Abracadabra'.";
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    // Read relevant attributes from the light DOM so <my-card image="..."> works reliably
-    if (this.hasAttribute('title')) this.title = this.getAttribute('title');
-    if (this.hasAttribute('image')) this.image = this.getAttribute('image');
-    if (this.hasAttribute('alt')) this.alt = this.getAttribute('alt');
-    if (this.hasAttribute('body')) this.body = this.getAttribute('body');
-    if (this.hasAttribute('btnlink')) this.btnLink = this.getAttribute('btnlink');
-    if (this.hasAttribute('cardbutton')) this.cardButton = this.getAttribute('cardbutton');
-  }
-
   static get styles() {
     return css`
       .card {
@@ -42,7 +31,15 @@ export class MyCard extends LitElement {
   text-align: center;
   width: 300px;
   color: var(--my-card-text-color);
-  font-family: serif;
+  font-family: var(--my-card-font-family);
+}
+
+:root, html, body {
+  font-size: 16px; 
+}
+
+.card.fancy {
+  background-color: #F76A2A;
 }
 
 #cardList {
@@ -112,7 +109,7 @@ export class MyCard extends LitElement {
   }
 
   render() {
-  
+  // use slots for body text
     return html`
     <div id="wrapper">
 <div class="card">
@@ -133,6 +130,9 @@ export class MyCard extends LitElement {
       title: { type: String },
       image: { type: String },
       alt: { type: String },
+      link: { type: String },
+      fancy: { type: Boolean }, 
+
     };
   }
 }
