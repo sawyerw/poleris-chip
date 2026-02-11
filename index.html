@@ -21,6 +21,16 @@
       margin: 16px;
     }
 
+  .cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  }
+
+  my-card[fancy] {
+  --my-card-fancy-bg: #f700ff;
+  } 
+
   my-card {
       --my-card-background-color: #731506;
       --my-card-btn-color: gray;
@@ -75,6 +85,18 @@
   --my-card-font-family: 'Brush Script MT', Cursive, cursive;
   --my-card-text-color: #2e356f;">
   </my-card>
+
+
+  <my-card fancy 
+  title="Fancy Card"
+  image="https://upload.wikimedia.org/wikipedia/en/thumb/0/0b/Lady_Gaga_-_Chromatica.png/220px-Lady_Gaga_-_Chromatica.png"
+  body="Lady Gaga is so fancy.">
+  </my-card>
+  
+
+
+
+
 
 </div>
   

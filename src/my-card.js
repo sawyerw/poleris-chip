@@ -20,11 +20,19 @@ export class MyCard extends LitElement {
     this.cardButton = "Details";
     this.btnLink = "https://hax.psu.edu";
     this.body = "Lady Gaga's 7th studio albulm, Mayhem, explores love, chaos, fame, and identity. It was preceded by two singles: 'Disease' and 'Abracadabra'.";
+    this.fancy = false;
   }
 
   static get styles() {
     return css`
-      .card {
+    :host([fancy]) {
+  display: block;
+  background-color: pink;
+  border: 2px solid fuchsia;
+  box-shadow: 10px 5px 5px red;
+}
+      
+    .card {
   border: 5px solid;
   border-radius: 5%;
   background-color: var(--my-card-background-color);
@@ -36,10 +44,6 @@ export class MyCard extends LitElement {
 
 :root, html, body {
   font-size: 16px; 
-}
-
-.card.fancy {
-  background-color: #F76A2A;
 }
 
 #cardList {
@@ -116,7 +120,9 @@ export class MyCard extends LitElement {
   <img class="card-image" src="${this.image}" alt="${this.alt}">
   <h1 class="card-title">${this.title}</h1>
   <div class="card-details">
-  <p>${this.body}</p>
+  <p>
+    <slot name="body">${this.body}</slot>
+  </p>
   </div>
   <a href="${this.btnLink}">
     <button class="btn">${this.cardButton}</button>
@@ -131,7 +137,7 @@ export class MyCard extends LitElement {
       image: { type: String },
       alt: { type: String },
       link: { type: String },
-      fancy: { type: Boolean }, 
+      fancy: { type: Boolean, reflect: true }
 
     };
   }
