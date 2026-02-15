@@ -29,6 +29,9 @@
 
   my-card[fancy] {
   --my-card-fancy-bg: #f700ff;
+  --my-card-background-color: var(--my-card-fancy-bg);
+  --my-card-btn-color: #e099e2;
+  --my-card-btn-hover-color: #dfdca1;
   } 
 
   my-card {
@@ -37,8 +40,8 @@
       --my-card-btn-hover-color: black;
       --my-card-text-color: white;
       --my-card-font-family: serif;
-
   }
+  
   </style>
   <title>polaris-chip / my-card</title>
 </head>
@@ -53,55 +56,78 @@
 
   <h1>my-card</h1>
 
-  <div id="cardlist">
-
-  <my-card>
-    <!--Default card-->
-  </my-card> 
+  <div class=cards>
 
   <my-card
-  title="Orange Gaga"
-  style="--my-card-background-color: orange;
-   --my-card-text-color: #731506;; 
-  --my-card-btn-color: gray; 
-  --my-card-btn-hover-color: black;">
+    title="The Fame"
+    image="https://upload.wikimedia.org/wikipedia/en/d/dd/Lady_Gaga_%E2%80%93_The_Fame_album_cover.png"
+    style="--my-card-background-color: #244484;
+      --my-card-btn-color: gray;
+      --my-card-btn-hover-color: black;">
+     The Fame was released on August 19, 2008
+<p>Singles:</p>
+<ul>
+  <li>Just Dance</li>
+  <li>Poker Face</li>
+  <li>Eh, Eh (Nothing Else I Can Say)</li>
+  <li>LoveGame</li>
+  <li>Paparazzi</li>
+</ul>
+  </my-card> 
+
+  <my-card 
+  title="Artpop"
+  image="https://upload.wikimedia.org/wikipedia/en/3/39/Artpop_cover.png"
+  style="--my-card-background-color: #e3a5e0;
+  --my-card-text-color: #1b37a7;
+  --my-card-btn-color: #1b37a7;">
+Artpop was released on November 6, 2013
+<p>Singles:</p>
+<ul>
+  <li>Applause</li>
+  <li>Do What U Want</li>
+  <li>G.U.Y.</li>
+</ul>
  </my-card>
 
   <my-card
-  style="--my-card-background-color: #b3aecb; 
-  --my-card-btn-color: #351919; 
-  --my-card-font-family: ['Courier New', Courier, monospace];
-  --my-card-text-color: #351919;">
-  </my-card>
-
-  <my-card
-  title="Lady Gaga"
-  style="--my-card-btn-color: white;">
-  </my-card>
-
-  <my-card
+  title="Chromatica"
+  image="https://www.theupcoming.co.uk/wp-content/uploads/2020/06/chromatica-album-cover.png"
   style="--my-card-background-color: #00dd07; 
-  --my-card-btn-color: #093402; 
-  --my-card-font-family: 'Brush Script MT', Cursive, cursive;
-  --my-card-text-color: #2e356f;">
+  --my-card-btn-color: #351919; 
+  --my-card-text-color: #351919;">
+  Chromatica was released on May 29, 2020
+<p>Singles:</p>
+<ul>
+  <li>Stupid Love</li>
+  <li>Rain on Me</li>
+  <li>911</li>
+  <li>Free Woman</li>
+</ul>
+  </my-card>
+
+  <my-card
+  title="Mayhem"
+  style="--my-card-background-color: #731506;
+      --my-card-btn-color: gray;
+      --my-card-btn-hover-color: black;">
+  Mayhem was released on March 7, 2025
+  <p>Singles:</p>
+  <ul>
+    <li>Disease</li>
+    <li>Abracadabra</li>
+  </ul>
   </my-card>
 
 
   <my-card fancy 
-  title="Fancy Card"
-  image="https://upload.wikimedia.org/wikipedia/en/thumb/0/0b/Lady_Gaga_-_Chromatica.png/220px-Lady_Gaga_-_Chromatica.png"
-  body="Lady Gaga is so fancy.">
+  title="Fancy Gaga"
+  image="https://akns-images.eonline.com/eol_images/Entire_Site/201946/rs_600x600-190506143502-600-gaga-met-gala-2019.jpg?fit=around%7C1080:1080&output-quality=90&crop=1080:1080;center,top">
+  Rah rah ro ma ma ga ga oo la la Fancy Fancy Fancy Fancy... Want your bad romance
   </my-card>
   
 
-
-
-
-
 </div>
-  
- 
-
 
   <!-- this is what is bringing in the definition for this tag -->
   <script type="module" src="./src/polaris-chip.js"></script>

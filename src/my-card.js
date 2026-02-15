@@ -1,10 +1,5 @@
 import { LitElement, html, css } from 'lit';
 
-/**
- * Now it's your turn. Here's what we need to try and do:
- * 1. Get you HTML from your card working in here 
- * 2. Get your CSS rescoped as needed to work here
- */
 
 export class MyCard extends LitElement {
 
@@ -17,9 +12,9 @@ export class MyCard extends LitElement {
     this.title = "Mayhem";
     this.image = "https://upload.wikimedia.org/wikipedia/en/thumb/d/db/Lady_Gaga_-_Mayhem.png/250px-Lady_Gaga_-_Mayhem.png";
     this.alt = "Lady Gaga";
+    this.description = "Lady Gaga's 7th studio album, Mayhem, explores love, chaos, fame, and identity. It was preceded by two singles: 'Disease' and 'Abracadabra'.";
     this.cardButton = "Details";
     this.btnLink = "https://hax.psu.edu";
-    this.body = "Lady Gaga's 7th studio albulm, Mayhem, explores love, chaos, fame, and identity. It was preceded by two singles: 'Disease' and 'Abracadabra'.";
     this.fancy = false;
   }
 
@@ -27,9 +22,9 @@ export class MyCard extends LitElement {
     return css`
     :host([fancy]) {
   display: block;
-  background-color: pink;
-  border: 2px solid fuchsia;
-  box-shadow: 10px 5px 5px red;
+  border: 3px solid fuchsia;
+  background-color: fuchsia
+
 }
       
     .card {
@@ -38,8 +33,11 @@ export class MyCard extends LitElement {
   background-color: var(--my-card-background-color);
   text-align: center;
   width: 300px;
+  height: 530px;
   color: var(--my-card-text-color);
   font-family: var(--my-card-font-family);
+  display: flex;
+  flex-direction: column;
 }
 
 :root, html, body {
@@ -67,14 +65,22 @@ export class MyCard extends LitElement {
   text-align: left;
   padding: 0 16px 0px 16px;
   margin: 4px 4px 4px 4px;
-  align: left;
+  flex: 1;
+  overflow: hidden;
 }
 
 .card-title {
   text-align: left;
   padding: 0 16px 0px 16px;
   margin: 4px 4px 4px 4px;
-  align: left;
+}
+
+.description-box {
+  height: 100px;
+  overflow-y: auto;
+  border: 3px solid #ccc;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 .btn {
@@ -85,6 +91,8 @@ export class MyCard extends LitElement {
   border-radius: 10%;
   padding: 16px 100px 16px 100px;
   margin: 10px 10px 16px 16px;
+  margin: auto 10px 16px 16px;
+  margin-top: auto;
 }
 
 .btn:hover {
@@ -112,6 +120,16 @@ export class MyCard extends LitElement {
     `;
   }
 
+  openChanged(e) {
+  console.log(e);
+  if (e.target.getAttribute('open') !== null) {
+    this.fancy = true;
+  }
+  else {
+    this.fancy = false;
+  }
+}
+
   render() {
   // use slots for body text
     return html`
@@ -120,9 +138,12 @@ export class MyCard extends LitElement {
   <img class="card-image" src="${this.image}" alt="${this.alt}">
   <h1 class="card-title">${this.title}</h1>
   <div class="card-details">
-  <p>
-    <slot name="body">${this.body}</slot>
-  </p>
+   <details ?open="${this.fancy}" @toggle="${this.openChanged}">
+      <summary>Description</summary>
+        <div class="description-box">
+          <slot>${this.description}</slot>
+        </div>
+  </details>
   </div>
   <a href="${this.btnLink}">
     <button class="btn">${this.cardButton}</button>
@@ -137,7 +158,8 @@ export class MyCard extends LitElement {
       image: { type: String },
       alt: { type: String },
       link: { type: String },
-      fancy: { type: Boolean, reflect: true }
+      fancy: { type: Boolean, reflect: true },
+      description: { type: String }
 
     };
   }
