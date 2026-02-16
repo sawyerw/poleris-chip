@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import "@haxtheweb/meme-maker/meme-maker.js";
 
 
 export class MyCard extends LitElement {
@@ -132,10 +133,21 @@ export class MyCard extends LitElement {
 
   render() {
   // use slots for body text
+  //<img class="card-image" 
+  //src="${this.image}" alt="${this.alt}">
     return html`
     <div id="wrapper">
 <div class="card">
-  <img class="card-image" src="${this.image}" alt="${this.alt}">
+  
+<div class="card-image">
+  <meme-maker
+alt="Up your meme game with hax and allow for more accessible memes"
+image-url="${this.image}"
+bottom-text="is awesome"
+top-text="${this.title}">
+</meme-maker>
+</div>
+  
   <h1 class="card-title">${this.title}</h1>
   <div class="card-details">
    <details ?open="${this.fancy}" @toggle="${this.openChanged}">
